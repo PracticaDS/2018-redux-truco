@@ -17,24 +17,21 @@ export default function Puntaje({ puntaje: { nosotros, ellos } }) {
 
   return (
     <div className="puntaje">
-      <div>
-        <div className="header nosotros">
-          N
-        </div>
-        <div className="palitos nosotros">
-          {palitosNos.map((p, i) => (<Cajita key={i} valor={p} />))}
-        </div>
-      </div>
-      <div>
-      <div className="header ellos">
-          E
-        </div>
-        <div className="palitos ellos">
-          {palitosEllos.map((p, i) => (<Cajita key={i} valor={p} />))}
-        </div>
-      </div>
+      <ColumnaPuntaje titulo="N" palitos={palitosNos} estilo="nosotros" />
+      <ColumnaPuntaje titulo="E" palitos={palitosEllos} estilo="ellos" />
     </div>
   )
 }
+
+const ColumnaPuntaje = ({ titulo, palitos, estilo }) => (
+  <div>
+    <div className={`header ${estilo}`}>
+      {titulo}
+    </div>
+    <div className={`palitos ${estilo}`}>
+      {palitos.map((p, i) => (<Cajita key={i} valor={p} />))}
+    </div>
+  </div>
+)
 
 const Cajita = ({ valor }) => <div>{valor}</div>
