@@ -9,3 +9,4 @@ import { Button, Welcome } from '@storybook/react/demo';
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
 require('./Carta.jsx')
+require('./Puntaje.jsx')
