@@ -6,5 +6,5 @@ import Puntaje from '../components/Puntaje'
 
 storiesOf('Puntaje', module)
   .add('nos 3, ellos 10', () =>
-    <Puntaje puntaje={{ nosotros: 3, ellos: 10 }} />
+    <Puntaje puntaje={{ nosotros: 3, ellos: 11 }} />
   )
