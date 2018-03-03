@@ -1,15 +1,15 @@
 import React from 'react'
-import { pipe, range, splitEvery, max, map } from 'ramda'
+import { pipe, range, splitEvery, max, map, length, repeat } from 'ramda'
 
 import './Puntaje.css'
 
 export default function Puntaje({ puntaje: { nosotros, ellos } }) {
-  const slots = max(nosotros, ellos) / 5
+  const slots = Math.ceil(max(nosotros, ellos) / 5)
   const palitos = pipe(
     range(1),
     splitEvery(5),
-    map(l => l.length),
-    groups => groups.concat(range(0, slots - groups.length).map(() => 0))
+    map(length),
+    groups => groups.concat(repeat(0, slots - groups.length))
   )
 
   const palitosNos = palitos(nosotros + 1)
