@@ -1,0 +1,81 @@
+
+.carta {
+  font-family: 'Open Sans', sans-serif;
+
+  width: 100px;
+  height: 150px;
+
+  border: 1px solid #979393;
+  border-radius: 8px;
+
+  padding: 10px;
+
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.carta.seleccionable {
+  cursor: pointer;
+}
+.carta.seleccionable:hover {
+  border: 1px solid #229DB2;
+  background-color: #229db26e;
+}
+
+/* border interior */
+.carta > div {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  border: 1px solid #c6c6c6;
+
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+/* contenido */
+
+.carta-palo {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-palo {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.logo-palo.oros { 
+  background-image: url('/images/palo-oros.jpg');
+  width: 80px;
+  height: 80px;
+}
+.logo-palo.bastos {
+  background-image: url('/images/palo-bastos.jpg');
+  width: 50px;
+  height: 120px;
+}
+.logo-palo.copas {
+  background-image: url('/images/palo-copas.jpg');
+  width: 80px;
+  height: 110px;
+}
+.logo-palo.espadas {
+  background-image: url('/images/palo-espadas.jpg');
+  width: 50px;
+  height: 110px;
+}
+
+.carta-numero-abajo {
+  display: flex;
+  justify-content: flex-end;
+}
+
