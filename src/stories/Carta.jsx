@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
 import Carta from '../components/Carta'
+import CartaJugada from '../components/CartaJugada'
 
 storiesOf('Carta', module)
   .add('3 de bastos', () =>
@@ -19,4 +20,7 @@ storiesOf('Carta', module)
   )
   .add('seleccionable', () =>
     <Carta carta={{ numero: 3, palo: 'bastos' }} seleccionable />
+  )
+  .add('CartaJugada', () =>
+    <CartaJugada />
   )
