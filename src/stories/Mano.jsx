@@ -22,3 +22,13 @@ storiesOf('Mano', module)
       seleccionable
     />
   )
+  .add('1 jugada', () =>
+    <Mano 
+      cartas={[
+        { numero: 3, palo: 'oros', jugada: true },
+        { numero: 2, palo: 'bastos' },
+        { numero: 12, palo: 'copas' }
+      ]}
+      seleccionable
+    />
+  )
