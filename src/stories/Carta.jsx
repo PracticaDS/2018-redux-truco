@@ -5,6 +5,7 @@ import { action } from '@storybook/addon-actions'
 import { Palo } from '../model/constants'
 import Carta from '../components/Carta'
 import CartaJugada from '../components/CartaJugada'
+import CartaOponente from '../components/CartaOponente'
 
 storiesOf('Carta', module)
   .add('3 de bastos', () =>
@@ -22,6 +23,10 @@ storiesOf('Carta', module)
   .add('seleccionable', () =>
     <Carta carta={{ numero: 3, palo: Palo.BASTOS }} onClick={action('carta seleccionada')} />
   )
+  .add('oponente', () =>
+    <CartaOponente />
+  )
+  // jugada
   .add('CartaJugada', () =>
     <CartaJugada />
   )

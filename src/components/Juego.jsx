@@ -22,12 +22,12 @@ export default function Juego() {
     }
   ]
   const cartasEllos = [
-    { numero: 3, palo: Palo.OROS },
+    { numero: 3, palo: Palo.OROS, jugada: true },
     { numero: 2, palo: Palo.BASTOS },
     { numero: 12, palo: Palo.COPAS }
   ]
   const cartasNosotros = [
-    { numero: 3, palo: Palo.OROS },
+    { numero: 3, palo: Palo.OROS, jugada: true },
     { numero: 2, palo: Palo.BASTOS },
     { numero: 12, palo: Palo.COPAS }
   ]
@@ -36,7 +36,7 @@ export default function Juego() {
   return (
     <div className="juego">
       <div>
-        <Mano cartas={cartasEllos} />
+        <Mano cartas={cartasEllos} oponente />
         <Mesa manos={manos} />
         <Mano cartas={cartasNosotros} />
       </div>

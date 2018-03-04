@@ -59,6 +59,15 @@
   border: none;
 }
 
+/* carta oculta (oponente */
+.carta.oponente {
+  background: brown;
+}
+.carta.oponente > div {
+  background: rgb(50, 15, 15);
+  border: none;
+}
+
 /* contenido */
 
 .carta-palo {

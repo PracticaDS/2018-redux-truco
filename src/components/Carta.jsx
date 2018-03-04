@@ -1,11 +1,12 @@
 import React from 'react'
+import classNames from 'classnames'
 
 import './Carta.css'
 
-export default function Carta({ carta, onClick, jugada = false }) {
+export default function Carta({ carta, onClick, jugada = false, oculta = false }) {
   return (
     <div 
-      className={`carta ${onClick ? 'seleccionable' : '' } ${jugada ? 'jugada' : ''}`}
+      className={classNames('carta', { seleccionable: onClick, jugada, oculta })}
       {...onClick && { onClick: () => { onClick(carta) }}}
     >
       <div>
