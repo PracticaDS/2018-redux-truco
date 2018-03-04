@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Carta from './Carta.jsx'
-import CartaJugada from './CartaJugada.jsx'
+import Carta from './Carta'
+import CartaJugada from './CartaJugada'
 
 import './Mano.css'
 

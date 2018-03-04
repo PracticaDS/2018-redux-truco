@@ -1,0 +1,58 @@
+
+.mesa {
+  display: flex;
+  border: 10px solid #990a0f;
+  background-color: red;
+  padding: 20px;
+  justify-content: center;
+}
+
+.manoJugada {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.manoJugada:not(:last-child) {
+  padding-right: 1.2em;
+}
+
+/* achicamos un poco las cartas */
+
+.mesa .carta {
+  transform: scale(0.7);
+}
+
+/* carta por jugar */
+.carta.porJugar {
+  opacity: 0.5;
+  background: brown;
+  box-shadow: none;
+}
+.carta.porJugar > div {
+  background: rgb(50, 15, 15);
+  border: none;
+}
+
+.mesa .manoJugada .carta:first-child {
+  margin-bottom: 1em;
+}
+
+.tilde {
+  width: 20px;
+  height: 20px;
+  margin-top: 0.5em;
+  border-radius: 20px;
+}
+.tilde.ganador {
+  background-color: greenyellow;
+}
+.tilde.perdedor {
+  background-color: black;
+}
+.tilde.empate {
+  background-color: yellow;
+}
+.tilde.indefinido {
+  background-color: #990a0f;
+}

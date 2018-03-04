@@ -11,3 +11,4 @@ storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo(
 require('./Carta.jsx')
 require('./Puntaje.jsx')
 require('./Mano.jsx')
+require('./Mesa.jsx')
