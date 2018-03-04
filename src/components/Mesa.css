@@ -13,15 +13,11 @@
   flex-direction: column;
 }
 
-.manoJugada:not(:last-child) {
-  padding-right: 1.2em;
-}
+.manoJugada:not(:last-child) { padding-right: 1.2em; }
 
 /* achicamos un poco las cartas */
 
-.mesa .carta {
-  transform: scale(0.7);
-}
+.mesa .carta {   transform: scale(0.7); }
 
 /* carta por jugar */
 .carta.porJugar {
@@ -34,9 +30,7 @@
   border: none;
 }
 
-.mesa .manoJugada .carta:first-child {
-  margin-bottom: 1em;
-}
+.mesa .manoJugada .carta:first-child { margin-bottom: 1em; }
 
 .tilde {
   width: 20px;
@@ -44,15 +38,7 @@
   margin-top: 0.5em;
   border-radius: 20px;
 }
-.tilde.ganador {
-  background-color: greenyellow;
-}
-.tilde.perdedor {
-  background-color: black;
-}
-.tilde.empate {
-  background-color: yellow;
-}
-.tilde.indefinido {
-  background-color: #990a0f;
-}
+.tilde.ganador { background-color: greenyellow; }
+.tilde.perdedor { background-color: black; }
+.tilde.empate { background-color: yellow; }
+.tilde.indefinido { background-color: #990a0f; }

@@ -8,6 +8,7 @@ import './Mesa.css'
 export default function Mesa({ manos }) {
   const todasLasManos = manos
     .concat(repeat({ }, 3 - manos.length))
+
   return (
     <div className="mesa">
       {todasLasManos.map(mano => (
@@ -19,16 +20,14 @@ export default function Mesa({ manos }) {
 
 const ManoJugada = ({ mano }) => (
   <div className="manoJugada">
-    {mano.ellos ? <Carta carta={mano.ellos} /> : <CartaPorJugar />}
-    {mano.nosotros ? <Carta carta={mano.nosotros} /> : <CartaPorJugar />}
+    <CartaOEspacio para={mano.ellos} />
+    <CartaOEspacio para={mano.nosotros} />
     <Tilde resultado={mano.resultado} />
   </div>
 )
 
-const CartaPorJugar = () => (
-  <div className="carta porJugar">
-    <div />
-  </div>
-)
+const CartaOEspacio = ({ para }) => (para ? <Carta carta={para} /> : <CartaPorJugar />)
+
+const CartaPorJugar = () => <div className="carta porJugar"><div /></div>
 
 const Tilde = ({ resultado }) => <div className={`tilde ${resultado || 'indefinido' }`} />
