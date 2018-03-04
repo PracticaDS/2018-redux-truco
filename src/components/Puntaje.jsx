@@ -34,4 +34,4 @@ const ColumnaPuntaje = ({ titulo, palitos, estilo }) => (
   </div>
 )
 
-const Cajita = ({ valor }) => <div>{valor}</div>
+const Cajita = ({ valor }) => <div className="cajita">{valor}</div>
