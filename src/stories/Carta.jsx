@@ -20,7 +20,7 @@ storiesOf('Carta', module)
     <Carta carta={{ numero: 12, palo: Palo.ESPADAS }} />
   )
   .add('seleccionable', () =>
-    <Carta carta={{ numero: 3, palo: Palo.BASTOS }} seleccionable />
+    <Carta carta={{ numero: 3, palo: Palo.BASTOS }} onClick={action('carta seleccionada')} />
   )
   .add('CartaJugada', () =>
     <CartaJugada />
