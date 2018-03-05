@@ -108,3 +108,7 @@
   display: flex;
   justify-content: flex-end;
 }
+.carta-numero-arriba {
+  display: flex;
+  justify-content: flex-start;
+}

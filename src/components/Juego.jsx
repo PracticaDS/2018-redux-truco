@@ -8,7 +8,7 @@ import { Palo, ResultadoMano } from '../model/constants'
 
 import './Juego.css'
 
-export default function Juego() {
+export default function Juego({ onIniciarJuego }) {
   const manos = [
     {
       nosotros: { numero: 3, palo: Palo.OROS },
@@ -35,6 +35,9 @@ export default function Juego() {
 
   return (
     <div className="juego">
+      <div>
+        <a href="#" onClick={onIniciarJuego}>Iniciar Juego</a>
+      </div>
       <div>
         <Mano cartas={cartasEllos} oponente />
         <Mesa manos={manos} />

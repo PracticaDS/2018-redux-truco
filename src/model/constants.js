@@ -11,3 +11,8 @@ export const Palo = {
   COPAS: 'copas',
   ESPADAS: 'espadas'
 }
+
+export const Turno = {
+  NOSOTROS: 'nosotros',
+  ELLOS: 'ellos'
+}

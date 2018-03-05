@@ -5,7 +5,16 @@
   justify-content: space-evenly;
 }
 
-.juego > div:nth-child(2) {
+.juego > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.juego > div > a {
+  padding-bottom: 1em;
+}
+
+.juego > div:nth-child(3) {
   padding-top: 2em;
   font-size: 1.5em;
 }
