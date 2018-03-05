@@ -11,8 +11,8 @@ export default function Mesa({ manos }) {
 
   return (
     <div className="mesa">
-      {todasLasManos.map(mano => (
-        <ManoJugada mano={mano}/>
+      {todasLasManos.map((mano, i) => (
+        <ManoJugada key={i} mano={mano}/>
       ))}
     </div>
   )

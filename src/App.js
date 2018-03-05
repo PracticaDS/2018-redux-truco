@@ -11,9 +11,9 @@ export default class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Redruco</h1>
         </header>
-        <p className="App-intro">
+        <div className="App-intro">
           <Juego />
-        </p>
+        </div>
       </div>
     )
   }

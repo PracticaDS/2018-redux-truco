@@ -2,7 +2,7 @@ import React from 'react'
 
 import Mano from './Mano'
 import Mesa from './Mesa'
-import Puntaje from './Puntaje'
+import Puntaje from '../containers/Puntaje'
 
 import { Palo, ResultadoMano } from '../model/constants'
 
@@ -31,7 +31,6 @@ export default function Juego({ onIniciarJuego }) {
     { numero: 2, palo: Palo.BASTOS },
     { numero: 12, palo: Palo.COPAS }
   ]
-  const puntaje = { nosotros: 3, ellos: 11 }
 
   return (
     <div className="juego">
@@ -44,7 +43,7 @@ export default function Juego({ onIniciarJuego }) {
         <Mano cartas={cartasNosotros} />
       </div>
       <div>
-        <Puntaje puntaje={puntaje} />
+        <Puntaje />
       </div>
     </div>
   )

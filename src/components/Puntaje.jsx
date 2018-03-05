@@ -12,13 +12,10 @@ export default function Puntaje({ puntaje: { nosotros, ellos } }) {
     groups => groups.concat(repeat(0, slots - groups.length))
   )
 
-  const palitosNos = palitos(nosotros + 1)
-  const palitosEllos = palitos(ellos + 1)
-
   return (
     <div className="puntaje">
-      <ColumnaPuntaje titulo="N" palitos={palitosNos} estilo="nosotros" />
-      <ColumnaPuntaje titulo="E" palitos={palitosEllos} estilo="ellos" />
+      <ColumnaPuntaje titulo="N" palitos={palitos(nosotros + 1)} estilo="nosotros" />
+      <ColumnaPuntaje titulo="E" palitos={palitos(ellos + 1)} estilo="ellos" />
     </div>
   )
 }

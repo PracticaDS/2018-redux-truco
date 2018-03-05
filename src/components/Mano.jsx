@@ -8,8 +8,8 @@ import './Mano.css'
 
 export default function Mano({ cartas, seleccionable, oponente }) {
   const crearCarta = oponente ?
-    carta => <CartaOponente jugada={carta.jugada}/>
-    : carta => carta.jugada ? <CartaJugada /> : <Carta carta={carta} seleccionable />
+    (carta, i) => <CartaOponente key={i} jugada={carta.jugada}/>
+    : (carta, i) => carta.jugada ? <CartaJugada key={i} /> : <Carta key={i} carta={carta} seleccionable />
   
   return (
     <div className="mano">
