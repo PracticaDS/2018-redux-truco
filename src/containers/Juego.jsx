@@ -6,8 +6,5 @@ import { iniciarJuego } from '../actions/juego'
 const mapActionsToProps = dispatch => ({
   onIniciarJuego: () => dispatch(iniciarJuego())
 })
-const mapStateToProps = state => ({
-  ronda: state.ronda
-})
 
-export default connect(mapStateToProps, mapActionsToProps)(Juego)
+export default connect(null, mapActionsToProps)(Juego)
