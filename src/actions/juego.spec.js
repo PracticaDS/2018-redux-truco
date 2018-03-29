@@ -1,5 +1,5 @@
 import { juego } from './juego.js'
-import { iniciarJuego } from '../actions/juego'
+import { iniciarJuego, cartas } from '../actions/juego'
 
 import { Palo, Turno } from '../model/constants'
 
@@ -39,7 +39,24 @@ describe('Juego actions', () => {
       })
 
     })
-  
+ 
+  })
+
+  describe('cartas', () => {
+    
+    it('crea una lista de objetos con palo y numero', () => {
+      const lasCartas = cartas()
+      expect(lasCartas.length).toEqual(40)
+      expect(lasCartas.every(o => o.palo && o.numero)).toBeTruthy()
+      
+      expect(lasCartas.filter(o => o.numero === 1)).toEqual([
+        { palo: 'bastos', numero: 1 },
+        { palo: 'oros', numero: 1 },
+        { palo: 'copas', numero: 1 },
+        { palo: 'espadas', numero: 1 }
+      ])
+    })
+
   })
   
 })

@@ -3,8 +3,6 @@ import React from 'react'
 import Ronda from '../containers/Ronda'
 import Puntaje from '../containers/Puntaje'
 
-import { Palo, ResultadoMano } from '../model/constants'
-
 import './Juego.css'
 
 export default function Juego({ onIniciarJuego }) {
