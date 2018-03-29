@@ -45,6 +45,7 @@ describe('Juego reducer', () => {
     it('debe jugar la carta en la PRIMERA MANO si todavía nadie jugó', () => {
       const state = {
         ronda: {
+          turno: 'nosotros',
           manos: [{}, {}, {}]
         }
       }
@@ -61,6 +62,7 @@ describe('Juego reducer', () => {
     it('debe jugar la carta en la SEGUNDA MANO si ya jugó en la primera', () => {
       const state = {
         ronda: {
+          turno: 'nosotros',
           manos: [{ nosotros: { numero: '1', palo: 'espada' } }, {}, {}]
         }
       }
@@ -77,6 +79,7 @@ describe('Juego reducer', () => {
     it('debe jugar la carta en la TERCERA MANO si ya jugó en la primera y segunda', () => {
       const state = {
         ronda: {
+          turno: 'nosotros',
           manos: [
             { nosotros: { numero: '1', palo: 'espada' } },
             { nosotros: { numero: '4', palo: 'copas' } },

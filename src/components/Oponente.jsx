@@ -10,7 +10,7 @@ export default class Oponente extends React.Component {
       setTimeout(() => {
         const carta = cartas.find(c => c.jugada === undefined)
         jugarCarta(carta)
-      }, randomBetween(1000, 5000))
+      }, randomBetween(500, 3000))
     }
   }
 
