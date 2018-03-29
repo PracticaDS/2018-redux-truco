@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
 import Juego from '../components/Juego'
 
-import { iniciarJuego } from '../actions/juego'
+import { iniciarJuegoRandom } from '../actions/juego'
 
 const mapActionsToProps = dispatch => ({
-  onIniciarJuego: () => dispatch(iniciarJuego())
+  onIniciarJuego: () => dispatch(iniciarJuegoRandom())
 })
 
 export default connect(null, mapActionsToProps)(Juego)

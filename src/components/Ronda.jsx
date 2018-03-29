@@ -2,17 +2,26 @@ import React from 'react'
 
 import Mano from './Mano.jsx'
 import Mesa from './Mesa.jsx'
+import ManoConTurno from './ManoConTurno.jsx'
+
+import { Turno } from '../model/constants'
 
 const noRonda = {
   cartas: { nosotros: [], ellos: [] },
   manos: []
 }
 
-const Ronda = ({ ronda: { cartas, manos } = noRonda }) => (
+const Ronda = ({ ronda: { cartas, manos, turno } = noRonda }) => (
   <div>
-    <Mano cartas={cartas.ellos} oponente />
+    <ManoConTurno actual={turno === Turno.ELLOS}>
+      <Mano cartas={cartas.ellos} oponente />
+    </ManoConTurno>
+
     <Mesa manos={manos} />
-    <Mano cartas={cartas.nosotros} />
+
+    <ManoConTurno actual={turno === Turno.NOSOTROS}>
+      <Mano cartas={cartas.nosotros} />
+    </ManoConTurno>
   </div>
 )
 export default Ronda

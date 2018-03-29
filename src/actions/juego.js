@@ -1,6 +1,6 @@
 import { tap, always, range, pipe, without, xprod, map, zipObj, take, splitEvery } from 'ramda'
 import shuffle from 'shuffle-array'
-import { Palo } from '../model/constants'
+import { Palo, Turno } from '../model/constants'
 
 export const INICIAR_JUEGO = 'INICIAR_JUEGO'
 export const iniciarJuego = (cartas, turno) => ({
@@ -8,6 +8,11 @@ export const iniciarJuego = (cartas, turno) => ({
   cartas,
   turno
 })
+
+
+export const iniciarJuegoRandom = () => iniciarJuego(barajar(), turnoRandom())
+
+const turnoRandom = () => Math.random() > 0.5 ? Turno.NOSOTROS : Turno.ELLOS 
 
 export const cartas = pipe(
   always(range(1, 13)),

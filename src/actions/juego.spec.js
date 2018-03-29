@@ -1,5 +1,5 @@
 import { juego } from './juego.js'
-import { iniciarJuego, cartas, barajar } from '../actions/juego'
+import { iniciarJuego, iniciarJuegoRandom, cartas, barajar } from '../actions/juego'
 
 import { Palo, Turno } from '../model/constants'
 
@@ -72,6 +72,19 @@ describe('Juego actions', () => {
       expectMano(barajado.nosotros)
     })
 
+  })
+
+  describe('iniciarJuegoRandom()', () => {
+
+    it('inicia el juego barajando cartas y asignando el turno inicial', () => {
+      const action = iniciarJuegoRandom()
+      expect(action.type).toEqual('INICIAR_JUEGO')
+      expect([Turno.NOSOTROS, Turno.ELLOS].includes(action.turno)).toBeTruthy()
+      expect(action.cartas).toBeTruthy()
+      expect(action.cartas.nosotros.length).toEqual(3)
+      expect(action.cartas.ellos.length).toEqual(3)  
+    })
+   
   })
   
 })

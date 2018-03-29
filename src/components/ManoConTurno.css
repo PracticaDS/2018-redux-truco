@@ -1,0 +1,17 @@
+
+
+.manoConTurno {
+  display: flex;
+  flex-direction: row;
+}
+.manoConTurno .turnoActual {
+  width: 32px;
+  margin-right: 1em;
+}
+
+.manoConTurno .turnoActual.habilitado {
+  background-image: url('/images/turno-flecha.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
