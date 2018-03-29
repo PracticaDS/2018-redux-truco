@@ -1,4 +1,5 @@
-import { always, range, pipe, without, xprod, map, zipObj } from 'ramda'
+import { tap, always, range, pipe, without, xprod, map, zipObj, take, splitEvery } from 'ramda'
+import shuffle from 'shuffle-array'
 import { Palo } from '../model/constants'
 
 export const INICIAR_JUEGO = 'INICIAR_JUEGO'
@@ -13,4 +14,12 @@ export const cartas = pipe(
   without([8, 9]),
   xprod(Object.values(Palo)),
   map(zipObj(['palo', 'numero']))
+)
+
+export const barajar = pipe(
+  cartas,
+  tap(shuffle),
+  take(6),
+  splitEvery(3),
+  zipObj(['nosotros', 'ellos'])
 )
