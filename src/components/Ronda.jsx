@@ -11,7 +11,7 @@ const noRonda = {
   manos: []
 }
 
-const Ronda = ({ ronda: { cartas, manos, turno } = noRonda }) => (
+const Ronda = ({ onJugarCarta, ronda: { cartas, manos, turno } = noRonda }) => (
   <div>
     <ManoConTurno actual={turno === Turno.ELLOS}>
       <Mano cartas={cartas.ellos} oponente />
@@ -20,7 +20,7 @@ const Ronda = ({ ronda: { cartas, manos, turno } = noRonda }) => (
     <Mesa manos={manos} />
 
     <ManoConTurno actual={turno === Turno.NOSOTROS}>
-      <Mano cartas={cartas.nosotros} />
+      <Mano cartas={cartas.nosotros} onClick={onJugarCarta} />
     </ManoConTurno>
   </div>
 )
