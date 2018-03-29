@@ -62,6 +62,7 @@
 /* carta oculta (oponente */
 .carta.oponente {
   background: brown;
+  height: 100px;
 }
 .carta.oponente > div {
   background: rgb(50, 15, 15);
