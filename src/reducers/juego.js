@@ -1,4 +1,6 @@
-import { INICIAR_JUEGO } from '../actions/juego'
+import { adjust, range, mapObjIndexed } from 'ramda'
+import { INICIAR_JUEGO, JUGAR_CARTA } from '../actions/juego'
+import { turnoContrario } from '../model/constants'
 
 const initialState = {
   puntaje: { nosotros: 0, ellos: 0 }
@@ -11,9 +13,29 @@ export const juego = (state = initialState, action) => {
       ronda: {
         turno: action.turno,
         cartas: action.cartas,
-        manos: []
+        manos: range(0, 3).map(() => (
+          { nosotros: undefined, ellos: undefined, resultado: undefined }
+        ))
+      }
+    }
+    case JUGAR_CARTA: return {
+      ...state,
+      ronda: {
+        ...state.ronda,
+        cartas: marcarJugada(state.ronda.cartas, action.carta),
+        turno: turnoContrario(state.ronda.turno),
+        manos: jugarCartaEnMano(state.ronda.manos, action.carta)
       }
     }
     default: return state
   }
 }
+
+const jugarCartaEnMano = (manos, carta) => 
+  adjust(m => ({ ...m, nosotros: carta }), manos.findIndex(m => !m.nosotros))(manos)
+
+const marcarJugada = (cartas, carta) => mapObjIndexed(
+  listaCartas => listaCartas.map(c => esCarta(c, carta) ? { ...c, jugada: true } : c)
+)(cartas)
+
+const esCarta = (carta, otra) => otra.numero === carta.numero && otra.palo === carta.palo

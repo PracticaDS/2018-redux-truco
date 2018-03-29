@@ -16,3 +16,5 @@ export const Turno = {
   NOSOTROS: 'nosotros',
   ELLOS: 'ellos'
 }
+
+export const turnoContrario = turno => turno === Turno.NOSOTROS ? Turno.ELLOS : Turno.NOSOTROS

@@ -26,5 +26,11 @@ export const barajar = pipe(
   tap(shuffle),
   take(6),
   splitEvery(3),
-  zipObj(['nosotros', 'ellos'])
+  zipObj([Turno.NOSOTROS, Turno.ELLOS])
 )
+
+export const JUGAR_CARTA = 'JUGAR_CARTA'
+export const jugarCarta = carta => ({
+  type: JUGAR_CARTA,
+  carta
+})
