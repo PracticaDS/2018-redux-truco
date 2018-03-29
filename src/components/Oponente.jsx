@@ -9,7 +9,9 @@ export default class Oponente extends React.Component {
     if (turno === Turno.ELLOS) {
       setTimeout(() => {
         const carta = cartas.find(c => c.jugada === undefined)
-        jugarCarta(carta)
+        if (carta) {
+          jugarCarta(carta)
+        }
       }, randomBetween(500, 3000))
     }
   }
