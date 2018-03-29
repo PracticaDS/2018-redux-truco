@@ -24,18 +24,18 @@ export const juego = (state = initialState, action) => {
         ...state.ronda,
         cartas: marcarJugada(state.ronda.cartas, action.carta),
         turno: turnoContrario(state.ronda.turno),
-        manos: jugarCartaEnMano(state.ronda.manos, action.carta)
+        manos: jugarCartaEnMano(state.ronda.manos, action.carta, state.ronda.turno)
       }
     }
     default: return state
   }
 }
 
-const jugarCartaEnMano = (manos, carta) => 
-  adjust(m => ({ ...m, nosotros: carta }), manos.findIndex(m => !m.nosotros))(manos)
+const jugarCartaEnMano = (manos, carta, turno) => 
+  adjust(m => ({ ...m, [turno]: carta }), manos.findIndex(m => !m[turno]))(manos)
 
 const marcarJugada = (cartas, carta) => mapObjIndexed(
   listaCartas => listaCartas.map(c => esCarta(c, carta) ? { ...c, jugada: true } : c)
 )(cartas)
 
-const esCarta = (carta, otra) => otra.numero === carta.numero && otra.palo === carta.palo
+const esCarta = (carta, otra) => (otra.numero === carta.numero && otra.palo === carta.palo)
