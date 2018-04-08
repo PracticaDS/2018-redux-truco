@@ -1,4 +1,4 @@
-import { map, concat, pipe, repeat, flip, prop } from 'ramda'
+import { map, concat, pipe, repeat, flip, prop, equals } from 'ramda'
 import { resultadoDeMano, evaluarManos, carta, Palo, ResultadoMano, cartaATexto, Turno } from './constants'
 
 const { ESPADAS, BASTOS, OROS, COPAS } = Palo
@@ -44,6 +44,8 @@ describe('modelo del truco', () => {
     // generador de tests
 
     const expectResultado = (resultados, esperado, turno) => {
+      // const _it = equals(resultados, [EMPATE, EMPATE, EMPATE]) ? it.only : it
+
       it(`${resultados.join(', ')} => ${esperado} (turno = ${turno})`, () => {
         const manos = pipe(
           map(resultado => ({ resultado })),
