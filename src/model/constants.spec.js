@@ -51,7 +51,7 @@ describe('modelo del truco', () => {
           map(resultado => ({ resultado })),
           flip(concat)(repeat({}, 3 - resultados.length))
         )(resultados)
-        expect(evaluarManos(manos, turno)).toEqual(esperado)
+        expect(evaluarManos(turno)(manos)).toEqual(esperado)
       })
     }
 

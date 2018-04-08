@@ -1,4 +1,4 @@
-import { pluck, equals, flatten, flip, prop } from 'ramda'
+import { pluck, equals, flatten, flip, prop, join, pipe, compose, ifElse, applyTo, identity } from 'ramda'
 import { isFunction } from 'util';
 
 export const ResultadoMano = {
@@ -58,7 +58,7 @@ const valorResultado = (a, b) => a < b ? ResultadoMano.GANADOR : (a === b ? Resu
 
 const { GANADOR, EMPATE, PERDEDOR } = ResultadoMano
 
-const resultadosToKey = _ => _.join(',')
+const resultadosToKey = join(',')
 const reglaCase = (cartasEsperadas, resultado) => ({
   [resultadosToKey(cartasEsperadas)]: resultado
 })
@@ -87,10 +87,9 @@ const reglas = {
   ...reglaCase([EMPATE, EMPATE, EMPATE], turno => (turno === Turno.NOSOTROS ? GANADOR : PERDEDOR))
 }
 
-export const evaluarManos = (manos, turno) => {
-  const resultados = pluck('resultado', manos)
-
-  const result = reglas[resultadosToKey(resultados)]
-
-  return result && isFunction(result) ? result(turno) : result
-}
+export const evaluarManos = turno => pipe(
+  pluck('resultado'),
+  resultadosToKey,
+  flip(prop)(reglas),
+  ifElse(isFunction, applyTo(turno), identity)
+)

@@ -54,5 +54,5 @@ const marcarJugada = (cartas, carta) => mapObjIndexed(
 
 const evaluarRonda = (turno, ronda) => ({
     ...ronda,
-    resultado: evaluarManos(ronda.manos, turno)
+    resultado: evaluarManos(turno)(ronda.manos)
 })
