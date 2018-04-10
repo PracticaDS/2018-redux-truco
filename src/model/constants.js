@@ -73,7 +73,7 @@ const regla = (ganadores, ganador) => {
 }
 
 const A = 'A', B = 'B', _ = undefined
-
+const mano = turno => (turno === Turno.NOSOTROS ? GANADOR : PERDEDOR)
 const reglas = {
   ...regla([A, A, _], A),
   ...regla([A, B, A], A),
@@ -84,7 +84,7 @@ const reglas = {
   ...regla([A, EMPATE, _], A),
   ...regla([EMPATE, A, _], A),
   ...regla([EMPATE, EMPATE, A], A),
-  ...reglaCase([EMPATE, EMPATE, EMPATE], turno => (turno === Turno.NOSOTROS ? GANADOR : PERDEDOR))
+  ...reglaCase([EMPATE, EMPATE, EMPATE], mano)
 }
 
 export const evaluarManos = turno => pipe(
