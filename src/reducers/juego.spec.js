@@ -1,5 +1,5 @@
 import { juego } from './juego.js'
-import { iniciarJuego, jugarCarta } from '../actions/juego'
+import { iniciarJuego, jugarCarta, registrarPuntos } from '../actions/juego'
 
 import { Palo, Turno } from '../model/constants'
 
@@ -151,4 +151,47 @@ describe('Juego reducer', () => {
 
   })
   
+  describe('registraPuntos', () => {
+    
+    it('1 en NOSOTROS', () => {
+      const state = {
+        puntaje: { nosotros: 0, ellos: 0 },
+        ronda: {}
+      }
+      const nuevoState = juego(state, registrarPuntos(Turno.NOSOTROS, 1))
+      expect(nuevoState)
+        .toEqual({
+          puntaje: { nosotros: 1, ellos: 0 },
+          ronda: {}
+        })
+    })
+
+    it('N (5) en NOSOTROS', () => {
+      const state = {
+        puntaje: { nosotros: 2, ellos: 0 },
+        ronda: {}
+      }
+      const nuevoState = juego(state, registrarPuntos(Turno.NOSOTROS, 5))
+      expect(nuevoState)
+        .toEqual({
+          puntaje: { nosotros: 7, ellos: 0 },
+          ronda: {}
+        })
+    })
+
+    it('N (3) en ELLOS', () => {
+      const state = {
+        puntaje: { nosotros: 2, ellos: 1 },
+        ronda: {}
+      }
+      const nuevoState = juego(state, registrarPuntos(Turno.ELLOS, 3))
+      expect(nuevoState)
+        .toEqual({
+          puntaje: { nosotros: 2, ellos: 4 },
+          ronda: {}
+        })
+    })
+
+  })
+
 })

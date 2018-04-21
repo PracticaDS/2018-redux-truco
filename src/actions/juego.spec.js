@@ -81,10 +81,10 @@ describe('Juego actions', () => {
       expect(action.type).toEqual('INICIAR_JUEGO')
       expect([Turno.NOSOTROS, Turno.ELLOS].includes(action.turno)).toBeTruthy()
       expect(action.cartas).toBeTruthy()
-      expect(action.cartas.nosotros.length).toEqual(3)
-      expect(action.cartas.ellos.length).toEqual(3)  
+      expect(action.cartas.nosotros).toHaveLength(3)
+      expect(action.cartas.ellos).toHaveLength(3)
     })
    
   })
-  
+
 })

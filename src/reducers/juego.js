@@ -1,5 +1,5 @@
-import { pipe, mergeDeepLeft, adjust, range, mapObjIndexed, prop, equals } from 'ramda'
-import { INICIAR_JUEGO, JUGAR_CARTA } from '../actions/juego'
+import { pipe, mergeDeepLeft, adjust, range, mapObjIndexed, prop, equals, evolve, add } from 'ramda'
+import { INICIAR_JUEGO, JUGAR_CARTA, REGISTRAR_PUNTOS } from '../actions/juego'
 import { turnoContrario, ResultadoMano, esCarta, resultadoDeMano, Turno, evaluarManos } from '../model/constants'
 
 const initialState = {
@@ -26,6 +26,10 @@ export const juego = (state = initialState, action) => {
         turno: turnoContrario(state.ronda.turno),
         manos: jugarCartaEnMano(state.ronda.manos, action.carta, state.ronda.turno)
       })
+    }
+    case REGISTRAR_PUNTOS: return {
+      ...state,
+      puntaje: evolve({ [action.jugador]: add(action.puntos)}, state.puntaje)
     }
     default: return state
   }

@@ -34,3 +34,10 @@ export const jugarCarta = carta => ({
   type: JUGAR_CARTA,
   carta
 })
+
+export const REGISTRAR_PUNTOS = 'REGISTRAR_PUNTOS'
+export const registrarPuntos = (jugador, puntos) => ({
+  type: REGISTRAR_PUNTOS, 
+  jugador,
+  puntos
+})
