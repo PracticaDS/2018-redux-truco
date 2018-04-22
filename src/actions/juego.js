@@ -1,6 +1,6 @@
 import { tap, always, range, pipe, without, xprod, map, zipObj, take, splitEvery } from 'ramda'
 import shuffle from 'shuffle-array'
-import { Palo, Turno } from '../model/constants'
+import { Palo, Turno, turnoContrario, resultadoAJugador } from '../model/constants'
 
 export const INICIAR_JUEGO = 'INICIAR_JUEGO'
 export const iniciarJuego = (cartas, turno) => ({
@@ -30,9 +30,27 @@ export const barajar = pipe(
 )
 
 export const JUGAR_CARTA = 'JUGAR_CARTA'
-export const jugarCarta = carta => ({
+export const jugarCartaSimple = carta => ({
   type: JUGAR_CARTA,
   carta
+})
+export const jugarCarta = carta => (dispatch, getState) => {
+  dispatch(jugarCartaSimple(carta))
+  const state = getState()
+  if (state.ronda.resultado) {
+    setTimeout(() => {
+      // por ahora no tenemos cantos, solo 1 punto ganas
+      dispatch(registrarPuntos(resultadoAJugador(state.ronda.resultado), 1))
+      dispatch(iniciarRonda(turnoContrario(state.esMano)))
+    }, 2000)
+  }
+}
+
+export const INICIAR_RONDA = 'INICIAR_RONDA'
+export const iniciarRonda = (turno) => ({
+  type: INICIAR_RONDA,
+  cartas: barajar(),
+  turno
 })
 
 export const REGISTRAR_PUNTOS = 'REGISTRAR_PUNTOS'

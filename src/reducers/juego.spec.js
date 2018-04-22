@@ -1,5 +1,5 @@
 import { juego } from './juego.js'
-import { iniciarJuego, jugarCarta, registrarPuntos } from '../actions/juego'
+import { iniciarJuego, jugarCartaSimple, registrarPuntos } from '../actions/juego'
 
 import { Palo, Turno } from '../model/constants'
 
@@ -21,6 +21,7 @@ describe('Juego reducer', () => {
     expect(juego(undefined, iniciarJuego(cartas, Turno.NOSOTROS)))
       .toEqual({
         puntaje: { nosotros: 0, ellos: 0 },
+        esMano: Turno.NOSOTROS,
         ronda: {
           turno: Turno.NOSOTROS,
           cartas: {
@@ -40,7 +41,7 @@ describe('Juego reducer', () => {
       })
   })
 
-  describe('jugarCarta()', () => {
+  describe('jugarCartaSimple()', () => {
     
     it('debe jugar la carta en la PRIMERA MANO si todavía nadie jugó', () => {
       const state = {
@@ -50,7 +51,7 @@ describe('Juego reducer', () => {
         }
       }
       const carta = { numero: '2', palo: 'bastos' }
-      const nuevoState = juego(state, jugarCarta(carta))
+      const nuevoState = juego(state, jugarCartaSimple(carta))
       expect(nuevoState.ronda.manos)
         .toEqual([
           { nosotros: carta },
@@ -67,7 +68,7 @@ describe('Juego reducer', () => {
         }
       }
       const carta = { numero: '2', palo: 'bastos' }
-      const nuevoState = juego(state, jugarCarta(carta))
+      const nuevoState = juego(state, jugarCartaSimple(carta))
       expect(nuevoState.ronda.manos)
         .toEqual([
           { nosotros: { numero: '1', palo: 'espada' } },
@@ -88,7 +89,7 @@ describe('Juego reducer', () => {
         }
       }
       const carta = { numero: '2', palo: 'bastos' }
-      const nuevoState = juego(state, jugarCarta(carta))
+      const nuevoState = juego(state, jugarCartaSimple(carta))
       expect(nuevoState.ronda.manos)
         .toEqual([
           { nosotros: { numero: '1', palo: 'espada' } },
@@ -103,7 +104,7 @@ describe('Juego reducer', () => {
         const state = {
           ronda: { turno: Turno.NOSOTROS, manos: [{}, {}, {}] },
         }
-        const nuevoState = juego(state, jugarCarta({ numero: '2', palo: 'bastos' }))
+        const nuevoState = juego(state, jugarCartaSimple({ numero: '2', palo: 'bastos' }))
         expect(nuevoState.ronda.turno)
           .toEqual(Turno.ELLOS)
       })
@@ -112,7 +113,7 @@ describe('Juego reducer', () => {
         const state = {
           ronda: { turno: Turno.ELLOS, manos: [{}, {}, {}] },
         }
-        const nuevoState = juego(state, jugarCarta({ numero: '2', palo: 'bastos' }))
+        const nuevoState = juego(state, jugarCartaSimple({ numero: '2', palo: 'bastos' }))
         expect(nuevoState.ronda.turno)
           .toEqual(Turno.NOSOTROS)
       }) 
@@ -136,7 +137,7 @@ describe('Juego reducer', () => {
             },
           },
         }
-        const nuevoState = juego(state, jugarCarta(carta))
+        const nuevoState = juego(state, jugarCartaSimple(carta))
         expect(nuevoState.ronda.cartas)
           .toEqual({
             nosotros: [
