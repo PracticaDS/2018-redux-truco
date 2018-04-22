@@ -74,6 +74,7 @@ const regla = (ganadores, ganador) => {
 
 const A = 'A', B = 'B', _ = undefined
 const mano = turno => (turno === Turno.NOSOTROS ? GANADOR : PERDEDOR)
+export const resultadoAJugador = resultado => resultado === GANADOR ? Turno.NOSOTROS : Turno.ELLOS
 const reglas = {
   ...regla([A, A, _], A),
   ...regla([A, B, A], A),

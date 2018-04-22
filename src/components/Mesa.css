@@ -4,6 +4,7 @@
   border: 10px solid #990a0f;
   background-color: red;
   padding: 20px;
+  padding-top: 0px;
   justify-content: center;
 }
 
@@ -30,12 +31,9 @@
   border: none;
 }
 
-.mesa .manoJugada .carta:first-child { margin-bottom: 1em; }
-
 .tilde {
   width: 20px;
   height: 20px;
-  margin-top: 0.5em;
   border-radius: 20px;
 }
 .tilde.ganador { background-color: greenyellow; }
