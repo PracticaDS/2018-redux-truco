@@ -9,7 +9,8 @@ const mapActionsToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   turno: state.ronda && state.ronda.turno,
-  cartas: state.ronda && state.ronda.cartas.ellos
+  cartas: state.ronda && state.ronda.cartas.ellos,
+  resultado: state.ronda && state.ronda.resultado
 })
 
 export default connect(mapStateToProps, mapActionsToProps)(Oponente)

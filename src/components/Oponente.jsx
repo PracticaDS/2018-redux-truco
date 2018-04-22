@@ -4,9 +4,9 @@ import { Turno } from '../model/constants'
 export default class Oponente extends React.Component {
 
   simularJugada() {
-    const { turno, cartas, jugarCarta } = this.props
-    console.log('simularJugada', turno)
-    if (turno === Turno.ELLOS) {
+    const { resultado, turno, cartas, jugarCarta } = this.props
+    if (!resultado && turno === Turno.ELLOS) {
+      // TODO: mover esto a un action
       setTimeout(() => {
         const carta = cartas.find(c => c.jugada === undefined)
         if (carta) {
