@@ -5,8 +5,6 @@ import Mesa from './Mesa.jsx'
 import ManoConTurno from './ManoConTurno.jsx'
 import ResultadoMano from './ResultadoMano.jsx'
 
-import { Turno } from '../model/constants'
-
 import './Ronda.css'
 
 const noRonda = {
@@ -14,16 +12,16 @@ const noRonda = {
   manos: []
 }
 
-const Ronda = ({ onJugarCarta, ronda: { cartas, manos, turno, resultado } = noRonda }) => (
+const Ronda = ({ onJugarCarta, ronda: { cartas, manos, resultado } = noRonda, nuestroTurno, turnoDeEllos }) => (
   <div className="ronda">
-    <ManoConTurno actual={turno === Turno.ELLOS && !resultado}>
+    <ManoConTurno actual={turnoDeEllos}>
       <Mano cartas={cartas.ellos} oponente />
     </ManoConTurno>
 
     <Mesa manos={manos} />
 
-    <ManoConTurno actual={turno === Turno.NOSOTROS && !resultado}>
-      <Mano cartas={cartas.nosotros} onClick={onJugarCarta} />
+    <ManoConTurno actual={nuestroTurno}>
+      <Mano cartas={cartas.nosotros} seleccionable={nuestroTurno} onClick={onJugarCarta} />
     </ManoConTurno>
 
     {resultado && <ResultadoMano resultado={resultado} />}

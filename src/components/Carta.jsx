@@ -3,11 +3,11 @@ import classNames from 'classnames'
 
 import './Carta.css'
 
-export default function Carta({ carta, onClick, jugada = false, oculta = false }) {
+export default function Carta({ carta, onClick, seleccionable, jugada = false, oculta = false }) {
   return (
     <div 
-      className={classNames('carta', { seleccionable: onClick, jugada, oculta })}
-      {...onClick && { onClick: () => { onClick(carta) }}}
+      className={classNames('carta', { seleccionable, jugada, oculta })}
+      {...seleccionable && onClick && { onClick: () => { onClick(carta) }}}
     >
       <div>
         <div className="carta-numero-arriba">{carta.numero}</div>

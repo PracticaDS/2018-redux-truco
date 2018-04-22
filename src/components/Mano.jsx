@@ -12,7 +12,7 @@ export default function Mano({ cartas, seleccionable, oponente, onClick }) {
     : (carta, i) => 
       carta.jugada ? 
         <CartaJugada key={i} /> :
-        <Carta key={i} carta={carta} jugada={carta.jugada} seleccionable onClick={onClick} />
+        <Carta key={i} carta={carta} jugada={carta.jugada} seleccionable={seleccionable} onClick={onClick} />
   
   return (
     <div className="mano">
